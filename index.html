@@ -1,0 +1,953 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank You | HabTrack Access Instructions</title>
+  <link rel="icon" type="image/png" href="assets/images/habtrack-icon.png">
+  <style>
+    @font-face {
+      font-family: Poppins;
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url("assets/fonts/poppins_n4.0ba78fa5af9b0e1a374041b3ceaadf0a43b41362.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: Poppins;
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url("assets/fonts/poppins_n7.56758dcf284489feb014a026f3727f2f20a54626.woff2") format("woff2");
+    }
+
+    :root {
+      color-scheme: dark;
+      --bg: #08090b;
+      --bg-2: #0d0d0f;
+      --surface: rgba(17, 19, 21, .88);
+      --surface-2: rgba(21, 23, 25, .92);
+      --surface-3: rgba(25, 26, 29, .86);
+      --line: rgba(255, 255, 255, .08);
+      --line-strong: rgba(255, 255, 255, .14);
+      --text: #ffffff;
+      --muted: #b8b8b8;
+      --subtle: #8d8d8d;
+      --blue: #00a3ff;
+      --blue-2: #009fe8;
+      --mint: #39e1c9;
+      --success: #2feac5;
+      --stars: #ffd84d;
+      --shadow: 0 26px 78px rgba(0, 0, 0, .42);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 22% 12%, rgba(0, 163, 255, .14), transparent 22%),
+        radial-gradient(circle at 75% 28%, rgba(57, 225, 201, .08), transparent 24%),
+        linear-gradient(180deg, #050608 0%, var(--bg) 38%, #050608 100%);
+      color: var(--text);
+      font-family: Poppins, Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .announcement {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 46px;
+      place-items: center;
+      background: linear-gradient(180deg, #13aeff, #009fe8);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 6, 8, .82);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      width: min(1130px, calc(100% - 44px));
+      min-height: 70px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .pill {
+      justify-self: start;
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 0 13px;
+      border-radius: 5px;
+      background: var(--blue);
+      box-shadow: 0 0 22px rgba(0, 163, 255, .28);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .logo {
+      width: 195px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 18px rgba(0, 163, 255, .22));
+    }
+
+    .account-icon {
+      justify-self: end;
+      width: 28px;
+      height: 28px;
+      color: rgba(255, 255, 255, .74);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 46px));
+      margin: 0 auto;
+      padding: 36px 0 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr);
+      gap: 46px;
+      align-items: center;
+      min-height: 400px;
+    }
+
+    .mockup-stage {
+      position: relative;
+      min-height: 338px;
+      filter: drop-shadow(0 28px 52px rgba(0, 0, 0, .52));
+    }
+
+    .device {
+      position: absolute;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, .24);
+      background: #090b0d;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .85), 0 18px 44px rgba(0, 0, 0, .46);
+    }
+
+    .laptop {
+      left: 32px;
+      top: 8px;
+      width: 442px;
+      height: 260px;
+      border-radius: 11px;
+      padding: 18px 18px 28px;
+    }
+
+    .phone {
+      left: 0;
+      top: 128px;
+      width: 116px;
+      height: 204px;
+      border-radius: 18px;
+      padding: 18px 9px 10px;
+      z-index: 3;
+    }
+
+    .tablet {
+      right: 0;
+      top: 132px;
+      width: 260px;
+      height: 196px;
+      border-radius: 13px;
+      padding: 14px;
+      z-index: 2;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 7px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .06), transparent 32%),
+        #101315;
+      padding: 13px;
+    }
+
+    .phone .screen { padding: 8px; border-radius: 10px; }
+    .tablet .screen { padding: 12px; }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: .62fr 1fr;
+      gap: 10px;
+      margin-bottom: 11px;
+    }
+
+    .dash-card {
+      min-height: 78px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(255, 255, 255, .07);
+      padding: 8px;
+    }
+
+    .donut {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: conic-gradient(#69dc68 0 78%, #2d3032 78% 100%);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .donut::before {
+      content: "";
+      position: absolute;
+      width: 43px;
+      height: 43px;
+      border-radius: 50%;
+      background: #111315;
+    }
+
+    .donut span { position: relative; z-index: 1; }
+
+    .tasks {
+      display: grid;
+      gap: 6px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 7px;
+      color: #e9eef2;
+    }
+
+    .tasks li {
+      display: grid;
+      grid-template-columns: 8px 1fr auto;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .tasks i {
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+      background: #69dc68;
+    }
+
+    .tasks b { color: #69dc68; font-size: 7px; }
+
+    .bars {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      align-items: end;
+      gap: 8px;
+      height: 85px;
+      padding: 10px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .045);
+      border: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .bars span {
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(180deg, #71df72, #3f9f46);
+      min-height: 26px;
+    }
+
+    .phone .dash-grid,
+    .tablet .dash-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
+    .phone .dash-card { min-height: 54px; padding: 6px; }
+    .phone .donut { width: 42px; height: 42px; font-size: 11px; }
+    .phone .donut::before { width: 29px; height: 29px; }
+    .phone .bars { height: 58px; gap: 4px; padding: 7px; }
+    .tablet .dash-card { min-height: 56px; }
+    .tablet .donut { width: 50px; height: 50px; font-size: 13px; }
+    .tablet .donut::before { width: 34px; height: 34px; }
+
+    .badge-success {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      border: 1px solid rgba(47, 234, 197, .45);
+      border-radius: 7px;
+      color: #74ffd9;
+      background: rgba(47, 234, 197, .08);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      max-width: 540px;
+      font-size: 43px;
+      line-height: 1.16;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 545px;
+      margin-top: 16px;
+      color: #d0d0d0;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .stars {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .stars strong {
+      color: var(--stars);
+      font-size: 19px;
+      letter-spacing: 2px;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 27px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 86px;
+      padding: 16px 18px;
+    }
+
+    .info-item + .info-item { border-left: 1px solid var(--line); }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .info-item span,
+    .mini-card span,
+    .trust-item span { display: block; color: var(--muted); font-size: 13px; }
+
+    .info-item .icon {
+      color: var(--blue);
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .info-item b,
+    .mini-card b,
+    .trust-item b { display: block; margin-top: 3px; color: #fff; font-size: 15px; }
+
+    .steps-card {
+      width: min(980px, 100%);
+      margin: 38px auto 0;
+      padding: 25px 104px;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .045), transparent 42%),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+      text-align: center;
+      font-size: 25px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .step-list { display: grid; gap: 13px; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px 58px 1fr;
+      gap: 18px;
+      align-items: center;
+      min-height: 79px;
+      padding: 13px 18px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: rgba(12, 13, 15, .74);
+    }
+
+    .number {
+      width: 41px;
+      height: 41px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #22baff, var(--blue));
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      box-shadow: 0 0 18px rgba(0, 163, 255, .28);
+    }
+
+    .step-icon {
+      width: 51px;
+      height: 51px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
+      font-size: 25px;
+    }
+
+    .step h3 {
+      margin-bottom: 5px;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .primary-cta {
+      display: grid;
+      width: min(980px, 100%);
+      min-height: 64px;
+      margin: 12px auto 0;
+      place-items: center;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #1bb6ff, var(--blue));
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 0 28px rgba(0, 163, 255, .34);
+    }
+
+    .cta-note {
+      margin-top: 10px;
+      color: var(--subtle);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .email-card,
+    .support-card {
+      width: min(980px, 100%);
+      margin: 20px auto 0;
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      align-items: center;
+      min-height: 103px;
+      border: 1px solid var(--line-strong);
+      border-radius: 9px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .email-card .round,
+    .support-card .round {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 30px;
+      background: rgba(47, 234, 197, .25);
+      border: 1px solid rgba(47, 234, 197, .22);
+    }
+
+    .email-copy,
+    .support-copy {
+      padding: 0 28px;
+      border-left: 1px solid var(--line-strong);
+    }
+
+    .email-copy h3,
+    .support-copy h3 {
+      margin-bottom: 6px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .email-copy p,
+    .support-copy p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .next {
+      width: min(970px, 100%);
+      margin: 25px auto 0;
+      text-align: center;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 29px;
+      margin-top: 18px;
+      text-align: left;
+    }
+
+    .mini-card {
+      min-height: 119px;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+
+    .mini-card .circle-blue {
+      width: 55px;
+      height: 55px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #1bb6ff, var(--blue));
+      color: #fff;
+      font-size: 30px;
+      box-shadow: 0 0 18px rgba(0, 163, 255, .28);
+    }
+
+    .trust-strip {
+      width: min(930px, 100%);
+      margin: 29px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .trust-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: center;
+      min-height: 70px;
+    }
+
+    .trust-item + .trust-item { border-left: 1px solid var(--line-strong); padding-left: 27px; }
+
+    .outline-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+      color: var(--blue);
+      font-size: 24px;
+    }
+
+    .support-card {
+      grid-template-columns: 128px 1fr 310px;
+      min-height: 132px;
+      padding-right: 38px;
+    }
+
+    .support-card .round {
+      width: 82px;
+      height: 82px;
+      background: rgba(0, 163, 255, .08);
+      border-color: rgba(255, 255, 255, .45);
+    }
+
+    .secondary-cta {
+      display: grid;
+      min-height: 51px;
+      place-items: center;
+      border: 2px solid #29adff;
+      border-radius: 6px;
+      color: #2ab2ff;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .response-time {
+      display: block;
+      margin-top: 14px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .testimonials {
+      margin: 29px auto 0;
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      margin-top: 17px;
+      text-align: left;
+    }
+
+    .testimonial {
+      position: relative;
+      min-height: 226px;
+      padding: 16px 16px 42px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      background: var(--surface-2);
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #263036;
+      border: 1px solid rgba(255, 255, 255, .28);
+    }
+
+    .testimonial .starline {
+      color: var(--stars);
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .testimonial b {
+      display: block;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .testimonial p {
+      margin-top: 8px;
+      color: #f2f2f2;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .quote {
+      position: absolute;
+      right: 16px;
+      bottom: 14px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #42eca9;
+      color: #fff;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .final-cta {
+      width: min(610px, 100%);
+      margin: 31px auto 26px;
+      text-align: center;
+    }
+
+    .final-cta h2 { font-size: 30px; line-height: 1.2; }
+    .final-cta p { margin-top: 14px; color: #d4d4d4; font-size: 16px; line-height: 1.55; }
+
+    .small-cta {
+      width: 330px;
+      min-height: 45px;
+      margin: 14px auto 0;
+      font-size: 17px;
+    }
+
+    .onboard {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer {
+      position: relative;
+      margin-top: 0;
+      padding: 62px 20px 25px;
+      overflow: hidden;
+      background: linear-gradient(116deg, #0090e0 12%, #45ffc3 86%);
+      text-align: center;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: -1px -5% auto;
+      height: 55px;
+      background: #050608;
+      clip-path: polygon(0 0, 100% 0, 100% 36%, 50% 74%, 0 36%);
+    }
+
+    footer h2 {
+      position: relative;
+      margin-bottom: 23px;
+      font-size: 17px;
+    }
+
+    .footer-links {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 33px;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .payments {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 34px 0 18px;
+    }
+
+    .pay-chip {
+      min-width: 49px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 3px;
+      background: #fff;
+      color: #1450a6;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .pay-chip.dark {
+      background: rgba(0, 0, 0, .66);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    .copyright {
+      position: relative;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .header-inner { grid-template-columns: 1fr; justify-items: center; padding: 12px 0; }
+      .pill, .account-icon { justify-self: center; }
+      .hero { grid-template-columns: 1fr; }
+      .steps-card { padding: 23px; }
+      .info-row, .mini-grid, .trust-strip, .testimonial-grid { grid-template-columns: 1fr; }
+      .info-item + .info-item, .trust-item + .trust-item { border-left: 0; border-top: 1px solid var(--line); padding-left: 18px; }
+      .support-card { grid-template-columns: 1fr; gap: 18px; padding: 24px; text-align: center; }
+      .support-copy { border-left: 0; padding: 0; }
+      .mockup-stage { min-height: 280px; transform: scale(.78); transform-origin: left top; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">THANK YOU FOR YOUR PURCHASE! <span aria-hidden="true">&#9733;</span></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="pill">Habit + Task Tracker</div>
+      <img class="logo" src="assets/images/habtrack-logo-header.png" alt="HabTrack">
+      <svg class="account-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 12.2a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 7.6c0-3.5-3-6.3-7-6.3s-7 2.8-7 6.3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="mockup-stage" aria-label="HabTrack app previews">
+        <div class="device laptop">
+          <div class="screen">
+            <div class="dash-top"><span>Welcome back, Alex!</span><span>&vellip;</span></div>
+            <div class="dash-grid">
+              <div class="dash-card"><div class="donut"><span>78%</span></div></div>
+              <div class="dash-card">
+                <ul class="tasks">
+                  <li><i></i><span>Organize workout plan</span><b>4/5</b></li>
+                  <li><i></i><span>Read 20 pages</span><b>3/3</b></li>
+                  <li><i></i><span>Meditation 15 min</span><b>2/3</b></li>
+                  <li><i></i><span>No sugar today</span><b>1/3</b></li>
+                </ul>
+              </div>
+            </div>
+            <div class="bars">
+              <span style="height:38px"></span><span style="height:66px"></span><span style="height:76px"></span><span style="height:70px"></span>
+              <span style="height:50px"></span><span style="height:68px"></span><span style="height:73px"></span><span style="height:64px"></span>
+            </div>
+          </div>
+        </div>
+        <div class="device phone">
+          <div class="screen">
+            <div class="dash-top"><span>My Habits</span><span>&vellip;</span></div>
+            <div class="dash-grid">
+              <div class="dash-card"><div class="donut"><span>78%</span></div></div>
+              <div class="dash-card">
+                <ul class="tasks"><li><i></i><span>Run</span><b>12d</b></li><li><i></i><span>Read</span><b>8d</b></li></ul>
+              </div>
+            </div>
+            <div class="bars"><span style="height:28px"></span><span style="height:43px"></span><span style="height:37px"></span><span style="height:50px"></span><span style="height:32px"></span><span style="height:47px"></span><span style="height:41px"></span><span style="height:54px"></span></div>
+          </div>
+        </div>
+        <div class="device tablet">
+          <div class="screen">
+            <div class="dash-top"><span>Goals</span><span>Monthly Progress</span></div>
+            <div class="dash-grid">
+              <div class="dash-card">
+                <ul class="tasks"><li><i></i><span>Blur To Done</span><b>5/5</b></li><li><i></i><span>Train</span><b>3/5</b></li></ul>
+              </div>
+              <div class="dash-card"><div class="donut"><span>82%</span></div></div>
+            </div>
+            <div class="dash-card">
+              <ul class="tasks">
+                <li><i></i><span>Organize workout plan</span><b>4/5</b></li>
+                <li><i></i><span>Read 20 pages</span><b>3/3</b></li>
+                <li><i></i><span>Meditation 15 min</span><b>2/3</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="badge-success">&#10003; Purchase Confirmed</div>
+        <h1>Thank You! Your HabTrack Access Is Ready</h1>
+        <p>Follow the simple steps below to create your account, verify your email, and log in to your habit tracking system.</p>
+        <div class="stars"><strong>&#9733;&#9733;&#9733;&#9733;&#9733;</strong><span>(7,500+ happy users)</span></div>
+        <div class="info-row">
+          <div class="info-item"><span class="icon">&#8623;</span><div><span>Delivery</span><b>Instant Access</b></div></div>
+          <div class="info-item"><span class="icon">&#9635;</span><div><span>Format</span><b>Web App</b></div></div>
+          <div class="info-item"><span class="icon">&#9993;</span><div><span>Email Sent</span><b>Yes</b></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps-card">
+      <h2 class="section-title">Access Your App in 3 Simple Steps</h2>
+      <div class="step-list">
+        <div class="step"><div class="number">1</div><div class="step-icon">&#9679;</div><div><h3>Create Your Account</h3><p>Click the button below and register using your email address.</p></div></div>
+        <div class="step"><div class="number">2</div><div class="step-icon">&#9993;</div><div><h3>Verify Your Email</h3><p>Check your inbox and confirm your email to activate your access.</p></div></div>
+        <div class="step"><div class="number">3</div><div class="step-icon">&#9635;</div><div><h3>Log In to HabTrack</h3><p>After verification, log in and start building your daily consistency.</p></div></div>
+      </div>
+    </section>
+
+    <a class="primary-cta" href="https://app.habtrack.shop">Access HabTrack App</a>
+    <p class="cta-note">You'll be redirected to the app registration page.</p>
+
+    <section class="email-card">
+      <div class="round">&#9993;</div>
+      <div class="email-copy">
+        <h3>Access instructions have also been sent to your email.</h3>
+        <p>If you don't see it, check your spam or promotions folder.</p>
+      </div>
+    </section>
+
+    <section class="next">
+      <h2 class="section-title">What Happens Next?</h2>
+      <div class="mini-grid">
+        <div class="mini-card"><div class="circle-blue">&#9675;</div><div><b>Register</b><span>Use the same email you purchased with.</span></div></div>
+        <div class="mini-card"><div class="circle-blue">&#9993;</div><div><b>Confirm</b><span>Open the verification email and activate your account.</span></div></div>
+        <div class="mini-card"><div class="circle-blue">&#9637;</div><div><b>Start Tracking</b><span>Log in and begin using your habit system today.</span></div></div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="trust-item"><div class="outline-icon">&#8623;</div><div><b>Instant Digital Access</b><span>Start within seconds</span></div></div>
+      <div class="trust-item"><div class="outline-icon">&#9635;</div><div><b>Works on Any Device</b><span>Desktop, tablet, or mobile</span></div></div>
+      <div class="trust-item"><div class="outline-icon">&#9826;</div><div><b>Secure Login</b><span>Your data is always protected</span></div></div>
+    </section>
+
+    <section class="support-card">
+      <div class="round">&#9827;</div>
+      <div class="support-copy">
+        <h3>Need Help Accessing Your Account?</h3>
+        <p>If you have any trouble registering, verifying your email, or logging in, contact our support team and we'll help you get started.</p>
+      </div>
+      <div>
+        <a class="secondary-cta" href="mailto:support@habtrack.com">Contact Support</a>
+        <span class="response-time">Average response time: within 24 hours.</span>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2 class="section-title">Loved by people building better habits</h2>
+      <div class="testimonial-grid">
+        <article class="testimonial"><img class="avatar" src="assets/images/photo_1.png" alt=""><div class="starline">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>Michael R.</b><p>Super easy to get started. I had my account set up in less than a minute. Loving the system so far!</p><span class="quote">&rdquo;</span></article>
+        <article class="testimonial"><img class="avatar" src="assets/images/HeroImage_Free_2.png" alt=""><div class="starline">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>Daniel K.</b><p>The email came through instantly and the setup was smooth. Can't wait to build my streaks!</p><span class="quote">&rdquo;</span></article>
+        <article class="testimonial"><img class="avatar" src="assets/images/HeroImage_Free_5.png" alt=""><div class="starline">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>Sarah J.</b><p>Beautiful dashboard and so easy to navigate. This is exactly what I needed to stay consistent.</p><span class="quote">&rdquo;</span></article>
+        <article class="testimonial"><img class="avatar" src="assets/images/HeroImage_Free_8.png" alt=""><div class="starline">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>James L.</b><p>Verified my email and logged in right away. The app looks amazing and is super motivating.</p><span class="quote">&rdquo;</span></article>
+        <article class="testimonial"><img class="avatar" src="assets/images/HeroImage_Free_11.png" alt=""><div class="starline">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>Rachel M.</b><p>Finally a habit tracker that actually keeps me accountable. Highly recommend!</p><span class="quote">&rdquo;</span></article>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <h2>Build Consistency. Start Today.</h2>
+      <p>Your system is ready. Create your account, verify your email, and begin tracking your habits in minutes.</p>
+      <a class="primary-cta small-cta" href="https://app.habtrack.shop">Go To The App</a>
+      <div class="onboard">We're excited to have you on board! &#128640;</div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Quick links</h2>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#">Support</a>
+      <a href="#terms">Terms of Service</a>
+      <a href="#privacy">Privacy Policy</a>
+    </nav>
+    <div class="payments" aria-label="Payment and security badges">
+      <span class="pay-chip">VISA</span><span class="pay-chip">MC</span><span class="pay-chip">AMEX</span><span class="pay-chip">DISC</span><span class="pay-chip">Apple Pay</span><span class="pay-chip">G Pay</span><span class="pay-chip">PayPal</span><span class="pay-chip dark">SSL</span><span class="pay-chip dark">stripe</span>
+    </div>
+    <div class="copyright">&copy; 2026 HabTrack. All rights reserved.</div>
+  </footer>
+</body>
+</html>
+
